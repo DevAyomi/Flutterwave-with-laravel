@@ -9,4 +9,8 @@ class PaymentController extends Controller
     public function index(){
     	return view('pages.pay-view');
     }
+
+    public function verify($transaction){
+    	return $transaction;
+    }
 }
