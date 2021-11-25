@@ -20,3 +20,4 @@ Route::get('/', function () {
 
 //Define Flutterwave pay page route here
 Route::any('/pay-page', [PaymentController::class, 'index']);
+Route::any('/verify-payment', [PaymentController::class, 'verify']);

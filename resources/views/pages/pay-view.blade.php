@@ -19,6 +19,7 @@
 
       <div class="main">
         <form id="makePaymentForm">
+          @csrf
           <div class="row mt-4">
             <div class="col-6">
                <div class="form-group">
@@ -100,7 +101,20 @@
       },
       callback: function (data) {
         var transaction = data.transaction_id;
-        console.log(transaction);
+        //Make Ajax request
+        var _token = $("input[name='_token']").val();
+        $.ajax({
+          type: "post",
+          url: "{{ URL::to('/verify-payment') }}",
+          data: {
+            transaction,
+            _token,
+          },
+          dataType: "",
+          success: function(response){
+            console.log(response);
+          }
+        });
       },
       onclose: function() {
         // close modal
